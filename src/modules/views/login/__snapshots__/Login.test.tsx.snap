@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar Component render should render with default props 1`] = `
+<div>
+  <input
+    onChange={[Function]}
+    placeholder="username"
+    type="text"
+    value=""
+  />
+  <input
+    onChange={[Function]}
+    placeholder="password"
+    type="password"
+    value=""
+  />
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Login
+  </button>
+</div>
+`;

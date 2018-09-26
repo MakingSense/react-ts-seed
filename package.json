@@ -16,9 +16,21 @@
     "build:qa": "dotenv -e ./src/config/.env.qa react-scripts-ts build",
     "build:stage": "dotenv -e ./src/config/.env.stage react-scripts-ts build",
     "build:production": "dotenv -e ./src/config/.env.production react-scripts-ts build",
-    "test": "dotenv -e ./src/config/.env.test react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject",
-    "lint": "tslint -c ./tslint.json 'src/**/*.{ts,tsx}'"
+    "test": "dotenv -e ./src/config/.env.test cross-env react-scripts-ts test --env=jsdom -- --coverage",
+    "lint": "tslint -c ./tslint.json 'src/**/*.{ts,tsx}'",
+    "eject": "react-scripts-ts eject"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/registerServiceWorker.ts",
+      "!src/index.tsx"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "text-summary"
+    ]
   },
   "dependencies": {
     "connected-react-router": "^4.5.0",
