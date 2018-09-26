@@ -2,14 +2,28 @@
   "name": "react-ts-seed",
   "version": "0.1.0",
   "private": true,
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "start": "yarn start:dev",
+    "start:local": "dotenv -e ./src/config/.env.local react-scripts-ts start",
+    "start:dev": "dotenv -e ./src/config/.env.development react-scripts-ts start",
+    "start:qa": "dotenv -e ./src/config/.env.qa react-scripts-ts start",
+    "build": "yarn build:production",
+    "build:development": "dotenv -e ./src/config/.env.development react-scripts-ts build",
+    "build:qa": "dotenv -e ./src/config/.env.qa react-scripts-ts build",
+    "build:stage": "dotenv -e ./src/config/.env.stage react-scripts-ts build",
+    "build:production": "dotenv -e ./src/config/.env.production react-scripts-ts build",
+    "test": "dotenv -e ./src/config/.env.test react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject",
+    "lint": "tslint -c ./tslint.json 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
     "connected-react-router": "^4.5.0",
+    "cross-env": "^5.2.0",
+    "pre-commit": "^1.2.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-lazy-route": "^0.1.0",
@@ -35,8 +49,12 @@
     "@types/react-test-renderer": "^16.0.2",
     "@types/redux": "^3.6.0",
     "@types/redux-devtools-extension": "^2.13.2",
+    "dotenv-cli": "^1.4.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
-    "typescript": "^3.0.3"
+    "tslint": "^5.11.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.0.3",
+    "yarn": "^1.10.1"
   }
 }
