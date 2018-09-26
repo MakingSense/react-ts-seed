@@ -1,6 +1,6 @@
 import { Epic, ofType } from 'redux-observable';
 import { of } from 'rxjs';
-import { mergeMap, map, catchError } from 'rxjs/operators';
+import { mergeMap, map, catchError, tap } from 'rxjs/operators';
 
 import { IAction, IRootState, IEpicDependencies } from '../rootState';
 import { actions, ActionType } from './actions';
@@ -12,6 +12,7 @@ export const authGetEpicAuthStart: Epic<IAction, IAction, IRootState, IEpicDepen
     mergeMap(action => of(action).pipe(
       mergeMap(({ payload }) => deps.apiService.login(payload)),
       map(res => actions.success(res)),
+      tap(() => deps.history.push('/todo-list')),
       catchError(error => of(coreState.actions.epicError(error)))
     ))
   );

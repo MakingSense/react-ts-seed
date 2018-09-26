@@ -3,4 +3,6 @@ export namespace GeneralModel {
     id: string;
     token: string;
   }
+
+  export type IEntityMap<T> = { [id: string]: T };
 }
