@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Avatar Component render should render with default props 1`] = `
+exports[`Login Component render should render with default props 1`] = `
 <div>
   <input
     onChange={[Function]}

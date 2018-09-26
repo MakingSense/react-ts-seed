@@ -1,7 +1,6 @@
 import { memorize } from './generalUtils';
 
 describe('generalUtils', () => {
-
   describe('memorize', () => {
     let concat: jest.Mock;
     beforeEach(() => {

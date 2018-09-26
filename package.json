@@ -25,7 +25,11 @@
       "src/**/*.{ts,tsx}",
       "!src/registerServiceWorker.ts",
       "!src/index.tsx",
-      "!src/test/**/*.*"
+      "!src/modules/state-mgmt/store.ts",
+      "!src/modules/AppRoot.tsx",
+      "!src/test/**/*.*",
+      "!src/modules/models/**/*.*",
+      "!src/**/index.tsx"
     ],
     "coverageReporters": [
       "lcov",

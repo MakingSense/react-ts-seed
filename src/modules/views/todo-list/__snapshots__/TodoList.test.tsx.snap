@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoList Component render should render with default props 1`] = `
+<table>
+  <thead>
+    <tr>
+      <th>
+        ID
+      </th>
+    </tr>
+    <tr>
+      <th>
+        name
+      </th>
+    </tr>
+    <tr>
+      <th>
+        description
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>
+        some todo
+      </td>
+      <td>
+        some desc
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

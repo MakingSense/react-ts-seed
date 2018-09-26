@@ -2,17 +2,19 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import { create } from 'react-test-renderer';
 
-import Login from './Login';
+import { getTodo_1 } from '../../../test/entities';
+import TodoList from './TodoList';
 
-describe('Login Component', () => {
+describe('TodoList Component', () => {
   let Component;
   let defaultProps;
 
   beforeEach(() => {
     defaultProps = {
-      login: jest.fn()
+      todoMap: { [getTodo_1().id]: getTodo_1() },
+      fetchTodoList: jest.fn()
     };
-    Component = shallow(<Login {...defaultProps} />);
+    Component = shallow(<TodoList {...defaultProps} />);
   });
 
   describe('render', () => {
