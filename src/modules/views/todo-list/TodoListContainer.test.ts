@@ -1,4 +1,5 @@
 import { mapStateToProps, mapDispatchToProps } from './TodoListContainer';
+import { todoState } from '../../state-mgmt/rootState';
 
 describe('TodoListContainer', () => {
   it('should mapStateToProps, ', () => {
@@ -10,5 +11,12 @@ describe('TodoListContainer', () => {
     expect(props).toEqual({
       fetchTodoList: expect.any(Function)
     });
+  });
+
+  it('should dispatch fetchTodoList action', () => {
+    const dispatch = jest.fn();
+    const props = mapDispatchToProps(dispatch);
+    props.fetchTodoList();
+    expect(dispatch).toBeCalledWith(todoState.actions.fetchStart());
   });
 });

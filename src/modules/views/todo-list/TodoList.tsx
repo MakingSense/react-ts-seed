@@ -19,7 +19,7 @@ export default class Login extends React.PureComponent<ILoginProps, ILoginState>
     const { todoMap } = this.props;
     const todoList = Object.values(todoMap);
     return (
-      <table>
+      <table key="TodoList">
         <thead>
           <tr><th>ID</th></tr>
           <tr><th>name</th></tr>

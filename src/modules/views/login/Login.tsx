@@ -31,7 +31,7 @@ export default class Login extends React.PureComponent<ILoginProps, ILoginState>
   public render() {
     const { username, password } = this.state;
     return (
-      <div>
+      <div key="Login">
         <input onChange={this.setUsername} value={username} placeholder="username" type="text" />
         <input onChange={this.setPassword} value={password} placeholder="password" type="password" />
         <button onClick={this.login} type="button">Login</button>

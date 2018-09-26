@@ -9,12 +9,23 @@ describe('ApiService', () => {
     (apiService as any).http = jest.fn().mockReturnValue(of({ response: null }));
   });
 
-  it('should make a request', done => {
-    const req = (apiService as any).request('url');
-    expect(req instanceof Observable).toBe(true);
-    req.subscribe(res => {
-      expect(res).toBe(null);
-      done();
+  describe('request', () => {
+    it('should make a request', done => {
+      const req = apiService.request('url');
+      expect(req instanceof Observable).toBe(true);
+      req.subscribe(res => {
+        expect(res).toBe(null);
+        done();
+      });
+    });
+
+    it('should make a request with a body', done => {
+      const req = apiService.request('url', { method: 'POST', body: { hi: 1 } });
+      expect(req instanceof Observable).toBe(true);
+      req.subscribe(res => {
+        expect(res).toBe(null);
+        done();
+      });
     });
   });
 
@@ -28,6 +39,11 @@ describe('ApiService', () => {
     const username = 'username';
     const password = 'password';
     const res = apiService.login({ username, password });
+    expect(res instanceof Observable).toBe(true);
+  });
+
+  it('should getTodoList', () => {
+    const res = apiService.getTodoList();
     expect(res instanceof Observable).toBe(true);
   });
 });

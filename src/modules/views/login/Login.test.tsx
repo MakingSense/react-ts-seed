@@ -20,4 +20,16 @@ describe('Login Component', () => {
       expect(create(Component).toJSON()).toMatchSnapshot();
     });
   });
+
+  describe('methods', () => {
+    it('should set username and password and login', () => {
+      const username = 'username';
+      const password = 'password';
+      Component.find('input[type="text"]').simulate('change', { target: { value: username } });
+      Component.find('input[type="password"]').simulate('change', { target: { value: password } });
+      expect(Component.instance().state).toEqual({ username, password });
+      Component.find('button').simulate('click');
+      expect(defaultProps.login).toBeCalledWith(username, password);
+    });
+  });
 });

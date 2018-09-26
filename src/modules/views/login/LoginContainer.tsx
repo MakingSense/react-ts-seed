@@ -8,7 +8,7 @@ export const mapStateToProps = (state: IRootState) => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  login: (email: string, password: string) => dispatch(authState.actions.start(email, password))
+  login: (username: string, password: string) => dispatch(authState.actions.start(username, password))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

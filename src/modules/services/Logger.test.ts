@@ -20,6 +20,12 @@ describe('Logger', () => {
     expect((Logger as any).printer.table).toHaveBeenCalledWith(data);
   });
 
+  it('should not log on the test env', () => {
+    (Logger as any).shouldLog = false;
+    Logger.log(123);
+    expect((Logger as any).printer.log.mock.calls).toHaveLength(0);
+  });
+
   afterAll(() => {
     (Logger as any).shouldLog = false;
   });
