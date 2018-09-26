@@ -24,7 +24,8 @@
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!src/registerServiceWorker.ts",
-      "!src/index.tsx"
+      "!src/index.tsx",
+      "!src/test/**/*.*"
     ],
     "coverageReporters": [
       "lcov",
