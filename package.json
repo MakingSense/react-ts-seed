@@ -18,6 +18,7 @@
     "build:production": "dotenv -e ./src/config/.env.production react-scripts-ts build",
     "test": "dotenv -e ./src/config/.env.test cross-env react-scripts-ts test --env=jsdom -- --coverage",
     "lint": "tslint -c ./tslint.json 'src/**/*.{ts,tsx}'",
+    "e2e": "cypress",
     "eject": "react-scripts-ts eject"
   },
   "jest": {
@@ -67,6 +68,7 @@
     "@types/react-test-renderer": "^16.0.2",
     "@types/redux": "^3.6.0",
     "@types/redux-devtools-extension": "^2.13.2",
+    "cypress": "^3.1.0",
     "dotenv-cli": "^1.4.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
