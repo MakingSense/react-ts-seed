@@ -1,24 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Login Component render should render with default props 1`] = `
-<div>
-  <input
-    onChange={[Function]}
-    placeholder="username"
-    type="text"
-    value=""
-  />
-  <input
-    onChange={[Function]}
-    placeholder="password"
-    type="password"
-    value=""
-  />
-  <button
-    onClick={[Function]}
-    type="button"
+<div
+  className="container"
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "height": "100%",
+    }
+  }
+>
+  <form
+    className="form-group"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "width": "100%",
+      }
+    }
   >
-    Login
-  </button>
+    <input
+      className="form-control"
+      onChange={[Function]}
+      placeholder="username"
+      style={
+        Object {
+          "marginBottom": "1rem",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <input
+      className="form-control"
+      onChange={[Function]}
+      placeholder="password"
+      style={
+        Object {
+          "marginBottom": "1rem",
+        }
+      }
+      type="password"
+      value=""
+    />
+    <button
+      className="btn btn-primary"
+      onClick={[Function]}
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+      type="button"
+    >
+      Login
+    </button>
+  </form>
 </div>
 `;

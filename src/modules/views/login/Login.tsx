@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import styles from './styles';
+
 export interface ILoginProps {
   login: (username: string, password: string) => void;
 }
@@ -31,10 +33,12 @@ export default class Login extends React.PureComponent<ILoginProps, ILoginState>
   public render() {
     const { username, password } = this.state;
     return (
-      <div key="Login">
-        <input onChange={this.setUsername} value={username} placeholder="username" type="text" />
-        <input onChange={this.setPassword} value={password} placeholder="password" type="password" />
-        <button onClick={this.login} type="button">Login</button>
+      <div style={styles.loginContainer} className="container" key="Login">
+        <form style={styles.loginForm} className="form-group">
+          <input style={styles.loginInput} className="form-control" onChange={this.setUsername} value={username} placeholder="username" type="text" />
+          <input style={styles.loginInput} className="form-control" onChange={this.setPassword} value={password} placeholder="password" type="password" />
+          <button style={styles.loginButton} className="btn btn-primary" onClick={this.login} type="button">Login</button>
+        </form>
       </div>
     );
   }

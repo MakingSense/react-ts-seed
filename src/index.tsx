@@ -1,7 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
 import AppRoot from './modules/AppRoot';
 import registerServiceWorker from './registerServiceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.css';
 
 ReactDOM.render(
   <AppRoot />,

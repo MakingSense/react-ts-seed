@@ -19,24 +19,28 @@ export default class Login extends React.PureComponent<ILoginProps, ILoginState>
     const { todoMap } = this.props;
     const todoList = Object.values(todoMap);
     return (
-      <table key="TodoList">
-        <thead>
-          <tr><th>ID</th></tr>
-          <tr><th>name</th></tr>
-          <tr><th>description</th></tr>
-        </thead>
-        <tbody>
-          {
-            todoList.map(todo => (
-              <tr key={todo.id}>
-                <td>{todo.id}</td>
-                <td>{todo.name}</td>
-                <td>{todo.description}</td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
+      <div className="container" key="TodoList">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>name</th>
+              <th>description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              todoList.map(todo => (
+                <tr key={todo.id}>
+                  <td>{todo.id}</td>
+                  <td>{todo.name}</td>
+                  <td>{todo.description}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
