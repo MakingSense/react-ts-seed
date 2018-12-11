@@ -1,5 +1,5 @@
 import { mapStateToProps, mapDispatchToProps } from './LoginContainer';
-import { authState } from '../../state-mgmt/rootState';
+import { authState } from '../../state-mgmt/auth';
 
 describe('LoginContainer', () => {
   it('should mapStateToProps, ', () => {

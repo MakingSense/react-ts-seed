@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
-import { IRootState, authState } from '../../state-mgmt/rootState';
+import { IRootState } from '../../state-mgmt/rootState';
+import { authState } from '../../state-mgmt/auth';
 import Login from './Login';
 
 export const mapStateToProps = (state: IRootState) => ({

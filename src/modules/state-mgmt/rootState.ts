@@ -1,8 +1,7 @@
 import { History } from 'history';
 
-import { IAuthState, authState } from './auth';
-import { ITodoState, todoState } from './todo';
-import { coreState } from './core';
+import { IAuthState } from './auth';
+import { ITodoState } from './todo';
 import { ApiService } from '../services/ApiService';
 import { Logger } from '../services/Logger';
 
@@ -21,5 +20,3 @@ export interface IEpicDependencies {
   apiService: ApiService;
   logger: typeof Logger;
 }
-
-export { coreState, authState, todoState };

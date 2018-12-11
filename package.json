@@ -25,12 +25,12 @@
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!src/registerServiceWorker.ts",
-      "!src/index.tsx",
       "!src/modules/state-mgmt/store.ts",
+      "!src/modules/state-mgmt/EpicRegistry.ts",
+      "!src/modules/state-mgmt/ReducerRegistry.ts",
       "!src/modules/AppRoot.tsx",
       "!src/test/**/*.*",
-      "!src/modules/models/**/*.*",
-      "!src/**/index.tsx"
+      "!src/**/index.{ts,tsx}"
     ],
     "coverageReporters": [
       "lcov",
@@ -68,7 +68,6 @@
     "@types/react-test-renderer": "^16.0.2",
     "@types/redux": "^3.6.0",
     "@types/redux-devtools-extension": "^2.13.2",
-    "cypress": "^3.1.0",
     "dotenv-cli": "^1.4.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",

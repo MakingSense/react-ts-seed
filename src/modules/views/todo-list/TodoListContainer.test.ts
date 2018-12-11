@@ -1,5 +1,5 @@
 import { mapStateToProps, mapDispatchToProps } from './TodoListContainer';
-import { todoState } from '../../state-mgmt/rootState';
+import { todoState } from '../../state-mgmt/todo';
 
 describe('TodoListContainer', () => {
   it('should mapStateToProps, ', () => {
