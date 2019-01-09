@@ -1,7 +1,7 @@
 import { History } from 'history';
 
-import { IAuthState } from './auth';
-import { ITodoState } from './todo';
+import { IState as IAuthState } from './auth/state';
+import { IState as ITodoState } from './todo/state';
 import { ApiService } from '../services/ApiService';
 import { Logger } from '../services/Logger';
 
