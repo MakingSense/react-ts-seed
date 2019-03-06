@@ -19,7 +19,9 @@
     "test": "dotenv -e ./src/config/.env.test cross-env react-scripts test --env=jsdom -- --coverage",
     "lint": "tslint -c ./tslint.json 'src/**/*.{ts,tsx}'",
     "eject": "react-scripts eject",
-    "analyze": "source-map-explorer build/static/js/main.* --html > tree.html && google-chrome tree.html"
+    "analyze": "source-map-explorer build/static/js/main.* --html > tree.html && google-chrome tree.html",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -30,7 +32,8 @@
       "!src/modules/state-mgmt/ReducerRegistry.ts",
       "!src/modules/AppRoot.tsx",
       "!src/test/**/*.*",
-      "!src/**/index.{ts,tsx}"
+      "!src/**/index.{ts,tsx}",
+      "!src/stories/*.story.tsx"
     ],
     "coverageReporters": [
       "lcov",
@@ -57,6 +60,13 @@
     "rxjs": "^6.3.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@storybook/addon-actions": "^5.0.0",
+    "@storybook/addon-info": "^5.0.0",
+    "@storybook/addon-knobs": "^5.0.0",
+    "@storybook/addon-links": "^5.0.0",
+    "@storybook/addons": "^5.0.0",
+    "@storybook/react": "^5.0.0",
     "@types/enzyme": "^3.1.14",
     "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/history": "^4.7.0",
@@ -69,9 +79,15 @@
     "@types/react-test-renderer": "^16.0.2",
     "@types/redux": "^3.6.0",
     "@types/redux-devtools-extension": "^2.13.2",
+    "@types/storybook__addon-actions": "^3.4.2",
+    "@types/storybook__addon-info": "^4.1.0",
+    "@types/storybook__addon-knobs": "^4.0.1",
+    "@types/storybook__addon-links": "^3.3.4",
+    "babel-loader": "^8.0.5",
     "dotenv-cli": "^1.4.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
+    "react-docgen-typescript-loader": "^3.0.1",
     "source-map-explorer": "^1.6.0",
     "tslint": "^5.11.0",
     "tslint-react": "^3.6.0",
