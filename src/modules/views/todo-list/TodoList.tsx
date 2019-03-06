@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
 import { GeneralModel, TodoModel } from '../../models';
 
-export interface ILoginProps {
+export interface ITodoListProps {
   todoMap: GeneralModel.IEntityMap<TodoModel.ITodo>;
   fetchTodoList: () => void;
 }
 
-export interface ILoginState { }
+export interface ITodoListState { }
 
-export default class Login extends React.PureComponent<ILoginProps, ILoginState> {
+export default class TodoList extends PureComponent<ITodoListProps, ITodoListState> {
   public componentDidMount() {
     const { fetchTodoList } = this.props;
     fetchTodoList();
