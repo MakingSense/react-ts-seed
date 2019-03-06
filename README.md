@@ -47,24 +47,21 @@ _(Optional. Any additional notes that will help reviewers understand the PR.)_
 ## Code Examples
 
 ### Models
-* Definition files for interfaces groped by namespace
+* Definition files for interfaces
 * Static typing advantages
 
 ```typescript
-/** namespace to group interfaces */
-export namespace UserModel {
-  export enum Status {
-    ONLINE = 'online',
-    OFFLINE = 'offline'
-  }
+export enum Status {
+  ONLINE = 'online',
+  OFFLINE = 'offline'
+}
 
-  /** this is how all user objects should look */
-  export interface IUser {
-    id?: string; // optional id field, because it's not there on entity creation
-    email: string;
-    name: string;
-    status: Status;
-  }
+/** this is how all user objects should look */
+export interface IUser {
+  id?: string; // optional id field, because it's not there on entity creation
+  email: string;
+  name: string;
+  status: Status;
 }
 ```
 
@@ -230,7 +227,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Communication);
 * * child components `for reusable renders, branching or other render related tasks`
 
 ```typescript
-import * as React from 'react';
+import React from 'react';
 
 import styles from './styles';
 
@@ -441,7 +438,7 @@ describe('AboutContainer', () => {
 * a snapshot is created for each version of the render so we cover all branches
 
 ```typescript
-import * as React from 'react';
+import React from 'react';
 import { shallow } from 'enzyme';
 import { create } from 'react-test-renderer';
 

@@ -1,2 +1,4 @@
-export * from './general';
-export * from './todo';
+import * as GeneralModel from './general';
+import * as TodoModel from './todo';
+
+export { GeneralModel, TodoModel };
