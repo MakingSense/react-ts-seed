@@ -4,6 +4,7 @@
 * React `for rendering views`
 * Redux `for state managment`
 * Redux Observable / Rxjs `for side effecst and data flows`
+* Storybook `to create component's stories`
 
 ### Standards
 - Git Flow, please read [git-workflow](https://github.com/MakingSense/development-guidelines/blob/master/git-workflow/README.md).
@@ -28,6 +29,7 @@ _(Optional. Any additional notes that will help reviewers understand the PR.)_
 * **test:** `yarn test` *unit tests*
 * **test:** `yarn test -u` *unit tests with snapshots update. Make sure you really need to update the snapshots by checking the error messages thoroughly*
 * **build:** `yarn e2e` *production build*
+* **storybook:** `yarn storybook` *launch storybook server to browse stories*
 
 
 ## Scaffolding
@@ -40,6 +42,7 @@ _(Optional. Any additional notes that will help reviewers understand the PR.)_
 * * * services (folder) `services that will be injected as dependencies to be used on epics`
 * * * state-mgmt (folder) `state management files grouped by entity and store creation`
 * * * views (folder) `react components grouped by page and shared folder including cross app components`
+* * stories (folder) `react storybook stories`
 * * test (folder) `testing helpers and mocks`
 * * types (folder) `general types that doesn't feet any model. This is rarely used`
 * * utils (folder) `utilities`
@@ -47,24 +50,21 @@ _(Optional. Any additional notes that will help reviewers understand the PR.)_
 ## Code Examples
 
 ### Models
-* Definition files for interfaces groped by namespace
+* Definition files for interfaces
 * Static typing advantages
 
 ```typescript
-/** namespace to group interfaces */
-export namespace UserModel {
-  export enum Status {
-    ONLINE = 'online',
-    OFFLINE = 'offline'
-  }
+export enum Status {
+  ONLINE = 'online',
+  OFFLINE = 'offline'
+}
 
-  /** this is how all user objects should look */
-  export interface IUser {
-    id?: string; // optional id field, because it's not there on entity creation
-    email: string;
-    name: string;
-    status: Status;
-  }
+/** this is how all user objects should look */
+export interface IUser {
+  id?: string; // optional id field, because it's not there on entity creation
+  email: string;
+  name: string;
+  status: Status;
 }
 ```
 
@@ -230,7 +230,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Communication);
 * * child components `for reusable renders, branching or other render related tasks`
 
 ```typescript
-import * as React from 'react';
+import React from 'react';
 
 import styles from './styles';
 
@@ -441,7 +441,7 @@ describe('AboutContainer', () => {
 * a snapshot is created for each version of the render so we cover all branches
 
 ```typescript
-import * as React from 'react';
+import React from 'react';
 import { shallow } from 'enzyme';
 import { create } from 'react-test-renderer';
 
@@ -477,6 +477,29 @@ describe('Login Component', () => {
     });
   });
 });
+```
+
+### Stories
+Any component can have a *story* inside the `src/stories` folder. The `src/stories` folder must only consists of 
+`[Component-Name].story.tsx` files (the `.story.tsx` extension is mandatory).
+
+**IMPORTANT:** If you want to take advantage of the self-documenting feature using prop and state interfaces, please
+extend the react component from `PureComponent` instead of `React.PureComponent`
+
+```typescript jsx
+  import React from 'react';
+  
+  import { storiesOf } from '@storybook/react';
+  
+  import TodoList from '../modules/views/todo-list/TodoList';
+  import { getTodo_1 } from '../test/entities';
+    
+  const todoMap = { [getTodo_1().id]: getTodo_1() };
+    
+  storiesOf('TodoList', module)
+    .add('with todoMap', () => (
+      <TodoList todoMap={todoMap} fetchTodoList={() => {/** */}} />
+  ));
 ```
 
 #### This section contains a guide of what we use to generate the react native application

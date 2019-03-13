@@ -1,8 +1,6 @@
-export namespace GeneralModel {
-  export interface ILoginResponse {
+export interface ILoginResponse {
     id: string;
     token: string;
-  }
-
-  export type IEntityMap<T> = { [id: string]: T };
 }
+
+export type IEntityMap<T> = { [id: string]: T };
