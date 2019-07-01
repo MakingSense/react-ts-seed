@@ -1,4 +1,6 @@
-export default {
+import { StyleSheet } from 'aphrodite/no-important';
+
+export default StyleSheet.create({
   loginContainer: {
     height: '100%',
     display: 'flex',
@@ -16,4 +18,4 @@ export default {
   loginButton: {
     width: '50%'
   }
-};
+});
