@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { memo, useMemo, useEffect } from 'react';
 
 import { GeneralModel, TodoModel } from '../../models';
 
@@ -7,40 +7,34 @@ export interface ITodoListProps {
   fetchTodoList: () => void;
 }
 
-export interface ITodoListState { }
+const TodoList = ({ todoMap, fetchTodoList }: ITodoListProps) => {
+  useEffect(() => { fetchTodoList(); }, []); // eslint-disable-line
 
-export default class TodoList extends PureComponent<ITodoListProps, ITodoListState> {
-  public componentDidMount() {
-    const { fetchTodoList } = this.props;
-    fetchTodoList();
-  }
+  const todoList = useMemo(() => Object.values(todoMap), [todoMap]);
+  return (
+    <div className="container" key="TodoList">
+      <table className="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>name</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            todoList.map(todo => (
+              <tr key={todo.id}>
+                <td>{todo.id}</td>
+                <td>{todo.name}</td>
+                <td>{todo.description}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
-  public render() {
-    const { todoMap } = this.props;
-    const todoList = Object.values(todoMap);
-    return (
-      <div className="container" key="TodoList">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>name</th>
-              <th>description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              todoList.map(todo => (
-                <tr key={todo.id}>
-                  <td>{todo.id}</td>
-                  <td>{todo.name}</td>
-                  <td>{todo.description}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-}
+export default memo(TodoList);

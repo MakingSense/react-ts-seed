@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { memo, useCallback, useState } from 'react';
+import { css } from 'aphrodite/no-important';
 
 import styles from './styles';
 
@@ -11,35 +12,44 @@ export interface ILoginState {
   password: string;
 }
 
-export default class Login extends React.PureComponent<ILoginProps, ILoginState> {
-  public state: ILoginState = {
-    username: '',
-    password: ''
-  };
+const Login = ({ login }: ILoginProps) => {
+  const [state, setState] = useState<ILoginState>({ username: '', password: '' });
 
-  public login = () => {
-    const { login } = this.props;
-    const { username, password } = this.state;
-    login(username, password);
-  }
+  const onLogin = useCallback(() => login(state.username, state.password), [state, login]);
 
-  public setUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ username: event.target.value });
-  }
-  public setPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ password: event.target.value });
-  }
+  const setUsername = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => setState({ ...state, username: event.target.value }),
+    [state, setState]
+  );
 
-  public render() {
-    const { username, password } = this.state;
-    return (
-      <div style={styles.loginContainer} className="container" key="Login">
-        <form style={styles.loginForm} className="form-group">
-          <input style={styles.loginInput} className="form-control" onChange={this.setUsername} value={username} placeholder="username" type="text" />
-          <input style={styles.loginInput} className="form-control" onChange={this.setPassword} value={password} placeholder="password" type="password" />
-          <button style={styles.loginButton} className="btn btn-primary" onClick={this.login} type="button">Login</button>
-        </form>
-      </div>
-    );
-  }
-}
+  const setPassword = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => setState({ ...state, password: event.target.value }),
+    [state, setState]
+  );
+
+  return (
+    <div className={`${css(styles.loginContainer)} container`} key="Login">
+      <form className={`${css(styles.loginForm)} form-group`}>
+        <input
+          className={`${css(styles.loginInput)} form-control`}
+          onChange={setUsername}
+          value={state.username}
+          placeholder="username"
+          type="text"
+          autoComplete="email"
+        />
+        <input
+          className={`${css(styles.loginInput)} form-control`}
+          onChange={setPassword}
+          value={state.password}
+          placeholder="password"
+          type="password"
+          autoComplete="password"
+        />
+        <button className={`${css(styles.loginButton)} btn btn-primary`} onClick={onLogin} type="button">Login</button>
+      </form>
+    </div>
+  );
+};
+
+export default memo(Login);

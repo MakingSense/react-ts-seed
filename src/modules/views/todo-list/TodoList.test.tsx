@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { create } from 'react-test-renderer';
 
 import { getTodo_1 } from '../../../test/entities';
@@ -7,14 +7,15 @@ import TodoList from './TodoList';
 
 describe('TodoList Component', () => {
   let Component;
-  let defaultProps;
+  let props;
 
   beforeEach(() => {
-    defaultProps = {
+    global.console.error = () => {/** */};
+    props = {
       todoMap: { [getTodo_1().id]: getTodo_1() },
       fetchTodoList: jest.fn()
     };
-    Component = shallow(<TodoList {...defaultProps} />);
+    Component = mount(<TodoList {...props} />);
   });
 
   describe('render', () => {

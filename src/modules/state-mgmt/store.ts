@@ -20,15 +20,15 @@ const epicMiddleware = createEpicMiddleware({
   } as IEpicDependencies
 });
 
-const withDevtools = composeWithDevTools({ maxAge: 20, shouldCatchErrors: true });
+const withDevtools = composeWithDevTools({ maxAge: 20, shouldCatchErrors: true, trace: true });
 
 const store: Store = createStore<IRootState, any, any, any>(
-  connectRouter(history)(combineReducers(ReducerRegistry.getReducers())),
+  combineReducers({ ...ReducerRegistry.getReducers(), router: connectRouter(history) }),
   {},
   withDevtools(applyMiddleware(routerMiddleware(history), epicMiddleware))
 );
 
-ReducerRegistry.setChangeListener(reducers => store.replaceReducer(connectRouter(history)(combineReducers(reducers))));
+ReducerRegistry.setChangeListener(reducers => store.replaceReducer(combineReducers({ ...reducers, router: connectRouter(history) })));
 
 export { store, history };
 

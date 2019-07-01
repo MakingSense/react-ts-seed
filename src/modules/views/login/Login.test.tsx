@@ -1,18 +1,19 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { create } from 'react-test-renderer';
 
 import Login from './Login';
 
 describe('Login Component', () => {
   let Component;
-  let defaultProps;
+  let props;
 
   beforeEach(() => {
-    defaultProps = {
+    global.console.error = () => {/** */};
+    props = {
       login: jest.fn()
     };
-    Component = shallow(<Login {...defaultProps} />);
+    Component = mount(<Login {...props} />);
   });
 
   describe('render', () => {
@@ -27,9 +28,8 @@ describe('Login Component', () => {
       const password = 'password';
       Component.find('input[type="text"]').simulate('change', { target: { value: username } });
       Component.find('input[type="password"]').simulate('change', { target: { value: password } });
-      expect(Component.instance().state).toEqual({ username, password });
       Component.find('button').simulate('click');
-      expect(defaultProps.login).toBeCalledWith(username, password);
+      expect(props.login).toBeCalledWith(username, password);
     });
   });
 });
