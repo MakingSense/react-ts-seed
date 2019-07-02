@@ -16,20 +16,16 @@ describe('Login Component', () => {
     Component = mount(<Login {...props} />);
   });
 
-  describe('render', () => {
-    it('should render with default props', () => {
-      expect(create(Component).toJSON()).toMatchSnapshot();
-    });
+  it('should render with default props', () => {
+    expect(create(Component).toJSON()).toMatchSnapshot();
   });
 
-  describe('methods', () => {
-    it('should set username and password and login', () => {
-      const username = 'username';
-      const password = 'password';
-      Component.find('input[type="text"]').simulate('change', { target: { value: username } });
-      Component.find('input[type="password"]').simulate('change', { target: { value: password } });
-      Component.find('button').simulate('click');
-      expect(props.login).toBeCalledWith(username, password);
-    });
+  it('should set username and password and login', () => {
+    const username = 'username';
+    const password = 'password';
+    Component.find('input[type="text"]').simulate('change', { target: { value: username } });
+    Component.find('input[type="password"]').simulate('change', { target: { value: password } });
+    Component.find('button').simulate('click');
+    expect(props.login).toBeCalledWith(username, password);
   });
 });

@@ -18,9 +18,7 @@ describe('TodoList Component', () => {
     Component = mount(<TodoList {...props} />);
   });
 
-  describe('render', () => {
-    it('should render with default props', () => {
-      expect(create(Component).toJSON()).toMatchSnapshot();
-    });
+  it('should render with default props', () => {
+    expect(create(Component).toJSON()).toMatchSnapshot();
   });
 });
