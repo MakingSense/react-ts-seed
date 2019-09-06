@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "video": false,
+  "defaultCommandTimeout": 15000,
+  "requestTimeout":30000,
+  "responseTimeout":30000,
+  "pageLoadTimeout":30000,
+  "taskTimeout": 15000,
+  "execTimeout": 15000
+}

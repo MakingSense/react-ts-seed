@@ -26,6 +26,7 @@ const Login = ({ login }: ILoginProps) => {
       <form className={`${css(styles.loginForm)} form-group`}>
         <input
           className={`${css(styles.loginInput)} form-control`}
+          data-testid="login-username"
           onChange={setUsername}
           value={state.username}
           placeholder="username"
@@ -36,11 +37,12 @@ const Login = ({ login }: ILoginProps) => {
           className={`${css(styles.loginInput)} form-control`}
           onChange={setPassword}
           value={state.password}
+          data-testid="login-password"
           placeholder="password"
           type="password"
           autoComplete="password"
         />
-        <button className={`${css(styles.loginButton)} btn btn-primary`} onClick={onLogin} type="button">
+        <button data-testid="login-btn" className={`${css(styles.loginButton)} btn btn-primary`} onClick={onLogin} type="button">
           Login
         </button>
       </form>
