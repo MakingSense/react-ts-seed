@@ -4,6 +4,7 @@
   "private": true,
   "pre-commit": [
     "lint",
+    "prettier:check",
     "test"
   ],
   "scripts": {
@@ -21,7 +22,14 @@
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer build/static/js/main.* --html > tree.html && google-chrome tree.html",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "cypress": "cypress",
+    "e2e:dev": "cypress open --browser chrome",
+    "e2e:run": "cross-env CYPRESS_RETRIES=3 cypress run --browser chrome",
+    "e2e": "start-server-and-test start:dev http://localhost:3000 e2e:run",
+    "build-storybook": "build-storybook -s public",
+    "prettier": "prettier --parser typescript --single-quote",
+    "prettier:check": "yarn prettier --list-different \"src/**/*.{ts,tsx}\"",
+    "format": "yarn prettier --write \"src/**/*.{ts,tsx}\""
   },
   "jest": {
     "collectCoverageFrom": [
@@ -61,7 +69,8 @@
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-observable": "^1.1.0",
-    "rxjs": "^6.5.2"
+    "rxjs": "^6.5.2",
+    "start-server-and-test": "^1.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -72,6 +81,7 @@
     "@storybook/addons": "^5.0.0",
     "@storybook/react": "^5.0.0",
     "@types/aphrodite": "^0.5.13",
+    "@types/cypress": "^1.1.3",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/history": "^4.7.2",
@@ -88,10 +98,13 @@
     "@types/storybook__addon-info": "^4.1.2",
     "@types/storybook__addon-knobs": "^5.0.3",
     "@types/storybook__addon-links": "^3.3.5",
+    "cypress": "^3.4.1",
+    "cypress-plugin-retries": "^1.2.2",
     "dotenv-cli": "^2.0.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jest-aphrodite-react": "^2.2.0",
+    "prettier": "^1.18.2",
     "react-docgen-typescript-loader": "^3.1.1",
     "source-map-explorer": "^2.0.1",
     "tslint": "^5.18.0",
@@ -103,5 +116,19 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 160,
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "quoteProps": "as-needed",
+    "jsxSingleQuote": false,
+    "jsxBracketSameLine": false,
+    "proseWrap": "preserve"
+  }
 }

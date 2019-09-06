@@ -13,6 +13,5 @@ export abstract class Logger {
   private static logMethod = (level, ...args) => {
     if (!Logger.shouldLog) return;
     Logger.printer[level](...args);
-  }
-
+  };
 }

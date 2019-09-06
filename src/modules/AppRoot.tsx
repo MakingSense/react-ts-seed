@@ -14,8 +14,24 @@ export default class App extends React.Component {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <Switch>
-            <Route exact={true} path="/" render={() => <Suspense fallback={<p>loading</p>}><Login /></Suspense>} />
-            <Route exact={true} path="/todo-list" render={() => <Suspense fallback={<p>loading</p>}><TodoList /></Suspense>} />
+            <Route
+              exact={true}
+              path="/"
+              render={() => (
+                <Suspense fallback={<p>loading</p>}>
+                  <Login />
+                </Suspense>
+              )}
+            />
+            <Route
+              exact={true}
+              path="/todo-list"
+              render={() => (
+                <Suspense fallback={<p>loading</p>}>
+                  <TodoList />
+                </Suspense>
+              )}
+            />
           </Switch>
         </ConnectedRouter>
       </Provider>

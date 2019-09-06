@@ -10,7 +10,9 @@ describe('TodoList Component', () => {
   let props;
 
   beforeEach(() => {
-    global.console.error = () => {/** */};
+    global.console.error = () => {
+      /** */
+    };
     props = {
       todoMap: { [getTodo_1().id]: getTodo_1() },
       fetchTodoList: jest.fn()
