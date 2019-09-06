@@ -34,6 +34,7 @@
     "jsx-no-lambda": false,
     "jsx-no-multiline-js": false,
     "label-position": true,
+    "jsx-curly-spacing": false,
     "max-line-length": [
       true,
       160
@@ -68,7 +69,6 @@
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
-    "no-use-before-declare": true,
     "one-line": [
       true,
       "check-catch",
@@ -76,15 +76,11 @@
       "check-open-brace",
       "check-whitespace"
     ],
-    "quotemark": [
-      true,
-      "single",
-      "jsx-double"
-    ],
     "radix": true,
     "semicolon": [
       true,
-      "always"
+      "always",
+      "ignore-bound-class-methods"
     ],
     "switch-default": false,
     "trailing-comma": [

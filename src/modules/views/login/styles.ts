@@ -13,7 +13,7 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   loginInput: {
-    marginBottom: '1rem',
+    marginBottom: '1rem'
   },
   loginButton: {
     width: '50%'

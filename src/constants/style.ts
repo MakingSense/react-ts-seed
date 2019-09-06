@@ -16,6 +16,6 @@ export const STYLE = {
     SENARY: '#646565',
     SEPTENARY: '#ECF0F5',
     BLACK: '#0F0F0F',
-    WHITE: '#FFF',
+    WHITE: '#FFF'
   }
 };

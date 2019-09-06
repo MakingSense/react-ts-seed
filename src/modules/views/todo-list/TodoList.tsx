@@ -8,7 +8,9 @@ export interface ITodoListProps {
 }
 
 const TodoList = ({ todoMap, fetchTodoList }: ITodoListProps) => {
-  useEffect(() => { fetchTodoList(); }, []); // eslint-disable-line
+  useEffect(() => {
+    fetchTodoList();
+  }, []); // eslint-disable-line
 
   const todoList = useMemo(() => Object.values(todoMap), [todoMap]);
   return (
@@ -22,15 +24,13 @@ const TodoList = ({ todoMap, fetchTodoList }: ITodoListProps) => {
           </tr>
         </thead>
         <tbody>
-          {
-            todoList.map(todo => (
-              <tr key={todo.id}>
-                <td>{todo.id}</td>
-                <td>{todo.name}</td>
-                <td>{todo.description}</td>
-              </tr>
-            ))
-          }
+          {todoList.map(todo => (
+            <tr key={todo.id}>
+              <td>{todo.id}</td>
+              <td>{todo.name}</td>
+              <td>{todo.description}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

@@ -16,7 +16,6 @@ describe('auth epics', () => {
   });
 
   describe('authGetEpicAuthStart', () => {
-
     const username = 'username';
     const password = 'password';
 
@@ -29,12 +28,13 @@ describe('auth epics', () => {
     });
 
     it('should catch errors and dispatch them to the general error handler', done => {
-      deps.apiService.login = () => { throw error; };
+      deps.apiService.login = () => {
+        throw error;
+      };
       authGetEpicAuthStart(ActionsObservable.of(actions.start(username, password)), {} as any, deps).subscribe(output => {
         expect(output).toEqual(coreState.actions.epicError(error));
         done();
       });
     });
   });
-
 });

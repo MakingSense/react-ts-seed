@@ -17,15 +17,9 @@ const Login = ({ login }: ILoginProps) => {
 
   const onLogin = useCallback(() => login(state.username, state.password), [state, login]);
 
-  const setUsername = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => setState({ ...state, username: event.target.value }),
-    [state, setState]
-  );
+  const setUsername = useCallback((event: React.ChangeEvent<HTMLInputElement>) => setState({ ...state, username: event.target.value }), [state, setState]);
 
-  const setPassword = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => setState({ ...state, password: event.target.value }),
-    [state, setState]
-  );
+  const setPassword = useCallback((event: React.ChangeEvent<HTMLInputElement>) => setState({ ...state, password: event.target.value }), [state, setState]);
 
   return (
     <div className={`${css(styles.loginContainer)} container`} key="Login">
@@ -46,7 +40,9 @@ const Login = ({ login }: ILoginProps) => {
           type="password"
           autoComplete="password"
         />
-        <button className={`${css(styles.loginButton)} btn btn-primary`} onClick={onLogin} type="button">Login</button>
+        <button className={`${css(styles.loginButton)} btn btn-primary`} onClick={onLogin} type="button">
+          Login
+        </button>
       </form>
     </div>
   );

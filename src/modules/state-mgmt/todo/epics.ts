@@ -9,11 +9,13 @@ import { coreState } from '../core';
 export const todoGetEpicFetchStart: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
   action$.pipe(
     ofType(ActionType.FETCH_START),
-    mergeMap(action => of(action).pipe(
-      mergeMap(() => deps.apiService.getTodoList()),
-      map(res => actions.fetchSuccess(res)),
-      catchError(error => of(coreState.actions.epicError(error)))
-    ))
+    mergeMap(action =>
+      of(action).pipe(
+        mergeMap(() => deps.apiService.getTodoList()),
+        map(res => actions.fetchSuccess(res)),
+        catchError(error => of(coreState.actions.epicError(error)))
+      )
+    )
   );
 
 export const epics = [todoGetEpicFetchStart];

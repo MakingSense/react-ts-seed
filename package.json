@@ -4,6 +4,7 @@
   "private": true,
   "pre-commit": [
     "lint",
+    "prettier:check",
     "test"
   ],
   "scripts": {
@@ -21,7 +22,10 @@
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer build/static/js/main.* --html > tree.html && google-chrome tree.html",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prettier": "prettier --parser typescript --single-quote",
+    "prettier:check": "yarn prettier --list-different \"src/**/*.{ts,tsx}\"",
+    "format": "yarn prettier --write \"src/**/*.{ts,tsx}\""
   },
   "jest": {
     "collectCoverageFrom": [
@@ -92,6 +96,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jest-aphrodite-react": "^2.2.0",
+    "prettier": "^1.18.2",
     "react-docgen-typescript-loader": "^3.1.1",
     "source-map-explorer": "^2.0.1",
     "tslint": "^5.18.0",
@@ -103,5 +108,19 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 160,
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "quoteProps": "as-needed",
+    "jsxSingleQuote": false,
+    "jsxBracketSameLine": false,
+    "proseWrap": "preserve"
+  }
 }

@@ -9,7 +9,9 @@ describe('Login Component', () => {
   let props;
 
   beforeEach(() => {
-    global.console.error = () => {/** */};
+    global.console.error = () => {
+      /** */
+    };
     props = {
       login: jest.fn()
     };

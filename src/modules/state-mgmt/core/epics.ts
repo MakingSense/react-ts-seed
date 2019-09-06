@@ -8,10 +8,12 @@ import { ActionType } from './actions';
 export const coreGetEpicErrorHandler: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
   action$.pipe(
     ofType(ActionType.EPIC_ERROR),
-    mergeMap(action => of(action).pipe(
-      tap(({payload}) => deps.logger.error(payload.error)),
-      switchMap(() => empty())
-    ))
+    mergeMap(action =>
+      of(action).pipe(
+        tap(({ payload }) => deps.logger.error(payload.error)),
+        switchMap(() => empty())
+      )
+    )
   );
 
 export const epics = [coreGetEpicErrorHandler];

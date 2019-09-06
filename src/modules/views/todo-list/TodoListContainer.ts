@@ -12,4 +12,7 @@ export const mapDispatchToProps = dispatch => ({
   fetchTodoList: () => dispatch(todoState.actions.fetchStart())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList);

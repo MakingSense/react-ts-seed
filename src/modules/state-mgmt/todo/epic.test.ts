@@ -25,12 +25,13 @@ describe('auth epics', () => {
     });
 
     it('should catch errors and dispatch them to the general error handler', done => {
-      deps.apiService.getTodoList = () => { throw error; };
+      deps.apiService.getTodoList = () => {
+        throw error;
+      };
       todoGetEpicFetchStart(ActionsObservable.of(actions.fetchStart()), {} as any, deps).subscribe(output => {
         expect(output).toEqual(coreState.actions.epicError(error));
         done();
       });
     });
   });
-
 });

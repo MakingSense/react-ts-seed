@@ -24,7 +24,7 @@ export class ApiService {
   }
 
   public request<T = any>(path: string, options: { method: string; body?: any; headers?: { [key: string]: any } } = { method: 'GET' }): Observable<T> {
-    options.headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
+    options.headers = { 'Content-Type': 'application/json', Accept: 'application/json' };
     if (options.body) options.body = this.parseBody(options.body);
     return this.http({ url: `${this.apiUrl}/${path}`, ...options }).pipe(
       map(data => data.response as T),
