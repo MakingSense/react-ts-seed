@@ -49,6 +49,7 @@ exports[`Login Component should render with default props 1`] = `
     <input
       autoComplete="email"
       className="loginInput form-control"
+      data-testid="login-username"
       onChange={[Function]}
       placeholder="username"
       type="text"
@@ -57,6 +58,7 @@ exports[`Login Component should render with default props 1`] = `
     <input
       autoComplete="password"
       className="loginInput form-control"
+      data-testid="login-password"
       onChange={[Function]}
       placeholder="password"
       type="password"
@@ -64,6 +66,7 @@ exports[`Login Component should render with default props 1`] = `
     />
     <button
       className="loginButton btn btn-primary"
+      data-testid="login-btn"
       onClick={[Function]}
       type="button"
     >
