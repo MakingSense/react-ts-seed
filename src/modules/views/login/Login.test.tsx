@@ -1,33 +1,29 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { create } from 'react-test-renderer';
+import { render, RenderResult, fireEvent } from '@testing-library/react';
 
-import Login from './Login';
+import Login, { ILoginProps } from './Login';
 
 describe('Login Component', () => {
-  let Component;
-  let props;
+  let wrapper: RenderResult;
+  let props: ILoginProps;
 
   beforeEach(() => {
-    global.console.error = () => {
-      /** */
-    };
     props = {
       login: jest.fn()
     };
-    Component = mount(<Login {...props} />);
+    wrapper = render(<Login {...props} />);
   });
 
-  it('should render with default props', () => {
-    expect(create(Component).toJSON()).toMatchSnapshot();
+  it('should render', () => {
+    expect(wrapper.baseElement).toMatchSnapshot();
   });
 
   it('should set username and password and login', () => {
     const username = 'username';
     const password = 'password';
-    Component.find('input[type="text"]').simulate('change', { target: { value: username } });
-    Component.find('input[type="password"]').simulate('change', { target: { value: password } });
-    Component.find('button').simulate('click');
+    fireEvent.change(wrapper.getByTestId('login-username'), { target: { value: username } });
+    fireEvent.change(wrapper.getByTestId('login-password'), { target: { value: password } });
+    fireEvent.click(wrapper.getByTestId('login-btn'));
     expect(props.login).toBeCalledWith(username, password);
   });
 });
