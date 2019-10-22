@@ -3,7 +3,7 @@ import { initialState } from './state';
 import { actions } from './actions';
 import { getTodo_1 } from '../../../test/entities';
 
-describe('auth reducer', () => {
+describe('todo reducer', () => {
   it('should return state without mutations when no switch case matches', () => {
     expect(reducer(initialState, { type: null, payload: null })).toBe(initialState);
   });

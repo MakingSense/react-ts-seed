@@ -6,7 +6,7 @@ import { IAction, IRootState, IEpicDependencies } from '../rootState';
 import { actions, ActionType } from './actions';
 import { coreState } from '../core';
 
-export const authGetEpicAuthStart: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
+export const authStart: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
   action$.pipe(
     ofType(ActionType.START),
     mergeMap(action =>
@@ -19,4 +19,4 @@ export const authGetEpicAuthStart: Epic<IAction, IAction, IRootState, IEpicDepen
     )
   );
 
-export const epics = [authGetEpicAuthStart];
+export const epics = [authStart];

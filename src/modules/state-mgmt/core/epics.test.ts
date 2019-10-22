@@ -1,9 +1,10 @@
 import { ActionsObservable } from 'redux-observable';
 
 import { IEpicDependencies } from '../../state-mgmt/rootState';
-import { coreGetEpicErrorHandler } from './epics';
+import { handleErrors } from './epics';
 import { actions } from './actions';
 import { getDeps } from '../../../test/epicDependencies';
+import { runEpic } from '../../../test/runEpic';
 
 describe('auth epics', () => {
   let deps: IEpicDependencies;
@@ -13,16 +14,15 @@ describe('auth epics', () => {
     deps = getDeps();
   });
 
-  describe('coreGetEpicErrorHandler', () => {
-    it('should dispatch no actions', done => {
-      coreGetEpicErrorHandler(ActionsObservable.of(actions.epicError(error)), {} as any, deps).subscribe(() => {
-        expect(false).toBe(true);
-        done();
-      });
-      setTimeout(() => {
-        expect(deps.logger.error).toBeCalledWith(error);
-        done();
-      }, 10);
+  describe('handleErrors', () => {
+    it('should dispatch no actions', () => {
+      return runEpic(
+        handleErrors(ActionsObservable.of(actions.epicError(error)), {} as any, deps),
+        actionList => {
+          expect(actionList).toHaveLength(0);
+        },
+        10
+      );
     });
   });
 });
