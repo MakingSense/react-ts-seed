@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Component should render with default props 1`] = `
+exports[`Login Component should render 1`] = `
 .loginContainer {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -40,38 +40,39 @@ exports[`Login Component should render with default props 1`] = `
   width: 50%;
 }
 
-<div
-  className="loginContainer container"
->
-  <form
-    className="loginForm form-group"
-  >
-    <input
-      autoComplete="email"
-      className="loginInput form-control"
-      data-testid="login-username"
-      onChange={[Function]}
-      placeholder="username"
-      type="text"
-      value=""
-    />
-    <input
-      autoComplete="password"
-      className="loginInput form-control"
-      data-testid="login-password"
-      onChange={[Function]}
-      placeholder="password"
-      type="password"
-      value=""
-    />
-    <button
-      className="loginButton btn btn-primary"
-      data-testid="login-btn"
-      onClick={[Function]}
-      type="button"
+<body>
+  <div>
+    <div
+      class="loginContainer container"
     >
-      Login
-    </button>
-  </form>
-</div>
+      <form
+        class="loginForm form-group"
+      >
+        <input
+          autocomplete="email"
+          class="loginInput form-control"
+          data-testid="login-username"
+          placeholder="username"
+          type="text"
+          value=""
+        />
+        <input
+          autocomplete="password"
+          class="loginInput form-control"
+          data-testid="login-password"
+          placeholder="password"
+          type="password"
+          value=""
+        />
+        <button
+          class="loginButton btn btn-primary"
+          data-testid="login-btn"
+          type="button"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
 `;

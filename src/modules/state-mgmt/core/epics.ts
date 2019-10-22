@@ -5,7 +5,7 @@ import { tap, mergeMap, switchMap } from 'rxjs/operators';
 import { IAction, IRootState, IEpicDependencies } from '../rootState';
 import { ActionType } from './actions';
 
-export const coreGetEpicErrorHandler: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
+export const handleErrors: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
   action$.pipe(
     ofType(ActionType.EPIC_ERROR),
     mergeMap(action =>
@@ -16,4 +16,4 @@ export const coreGetEpicErrorHandler: Epic<IAction, IAction, IRootState, IEpicDe
     )
   );
 
-export const epics = [coreGetEpicErrorHandler];
+export const epics = [handleErrors];

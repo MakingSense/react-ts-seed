@@ -6,7 +6,7 @@ import { IAction, IRootState, IEpicDependencies } from '../rootState';
 import { actions, ActionType } from './actions';
 import { coreState } from '../core';
 
-export const todoGetEpicFetchStart: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
+export const fetchStart: Epic<IAction, IAction, IRootState, IEpicDependencies> = (action$, state$, deps) =>
   action$.pipe(
     ofType(ActionType.FETCH_START),
     mergeMap(action =>
@@ -18,4 +18,4 @@ export const todoGetEpicFetchStart: Epic<IAction, IAction, IRootState, IEpicDepe
     )
   );
 
-export const epics = [todoGetEpicFetchStart];
+export const epics = [fetchStart];

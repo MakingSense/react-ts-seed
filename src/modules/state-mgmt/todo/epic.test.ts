@@ -1,13 +1,14 @@
 import { ActionsObservable } from 'redux-observable';
 
 import { IEpicDependencies } from '../../state-mgmt/rootState';
-import { todoGetEpicFetchStart } from './epics';
+import { fetchStart } from './epics';
 import { actions } from './actions';
 import { getDeps } from '../../../test/epicDependencies';
 import { getTodo_1 } from '../../../test/entities';
 import { coreState } from '../core';
+import { runEpic } from '../../../test/runEpic';
 
-describe('auth epics', () => {
+describe('todo epics', () => {
   let deps: IEpicDependencies;
   let error;
   beforeEach(() => {
@@ -15,22 +16,20 @@ describe('auth epics', () => {
     deps = getDeps();
   });
 
-  describe('authGetEpicAuthStart', () => {
-    it('should get epic for auth start', done => {
-      todoGetEpicFetchStart(ActionsObservable.of(actions.fetchStart()), {} as any, deps).subscribe(output => {
+  describe('authStart', () => {
+    it('should get epic for auth start', () => {
+      return runEpic(fetchStart(ActionsObservable.of(actions.fetchStart()), {} as any, deps), actionList => {
         expect(deps.apiService.getTodoList).toBeCalled();
-        expect(output).toEqual(actions.fetchSuccess([getTodo_1()]));
-        done();
+        expect(actionList[0]).toEqual(actions.fetchSuccess([getTodo_1()]));
       });
     });
 
-    it('should catch errors and dispatch them to the general error handler', done => {
+    it('should catch errors', () => {
       deps.apiService.getTodoList = () => {
         throw error;
       };
-      todoGetEpicFetchStart(ActionsObservable.of(actions.fetchStart()), {} as any, deps).subscribe(output => {
-        expect(output).toEqual(coreState.actions.epicError(error));
-        done();
+      return runEpic(fetchStart(ActionsObservable.of(actions.fetchStart()), {} as any, deps), actionList => {
+        expect(actionList[0]).toEqual(coreState.actions.epicError(error));
       });
     });
   });
