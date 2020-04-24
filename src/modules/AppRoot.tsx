@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router';
 
 import { store, history } from './state-mgmt/store';
 
-const Login = lazy(() => import('./views/Login'));
+const Login = lazy(() => import('./views/login'));
 const TodoList = lazy(() => import('./views/TodoList'));
 
 export default class App extends React.Component {
