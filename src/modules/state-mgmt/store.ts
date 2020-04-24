@@ -6,7 +6,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 import { ReducerRegistry } from './ReducerRegistry';
 import { EpicRegistry } from './EpicRegistry';
-import { IEpicDependencies } from './rootState';
+import { IEpicDependencies, IRootState } from './rootState';
 import { ApiService } from '../services/ApiService';
 import { Logger } from '../services/Logger';
 
@@ -22,8 +22,8 @@ const epicMiddleware = createEpicMiddleware({
 
 const withDevtools = composeWithDevTools({ maxAge: 20, shouldCatchErrors: true, trace: true });
 
-const store: Store = createStore<any, any, any, any>(
-  combineReducers({ ...ReducerRegistry.getReducers(), router: connectRouter(history) as any }),
+const store: Store = createStore<IRootState, any, any, any>(
+  combineReducers({ ...ReducerRegistry.getReducers(), router: connectRouter(history) as any }) as any,
   {} as any,
   withDevtools(applyMiddleware(routerMiddleware(history), epicMiddleware))
 );
