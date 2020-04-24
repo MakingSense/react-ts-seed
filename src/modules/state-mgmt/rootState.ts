@@ -13,6 +13,7 @@ export interface IAction {
 export interface IRootState {
   auth: IAuthState;
   todo: ITodoState;
+  router?: { location: { pathname: string; search: string; hard: string; key: string }; action: string };
 }
 
 export interface IEpicDependencies {

@@ -4,7 +4,7 @@ export class ReducerRegistry {
   private static emitChange: any = null;
   private static reducers: { [stateName: string]: Reducer } = { initRedux: () => true };
 
-  public static getReducers(): any {
+  public static getReducers(): ReducersMapObject {
     return { ...ReducerRegistry.reducers };
   }
 
